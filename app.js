@@ -6,10 +6,7 @@ const PORT = 3000
 const {MONGOURI} = require('./keys')
 
 require("./models/user")
-
-app.use(express.json())
-app.use(require('./routes/auth'))
-
+require("./models/post")
 
 
 mongoose.connect(MONGOURI,{
@@ -25,6 +22,12 @@ mongoose.connection.on('error',(err)=> {
 })
 
 
+app.use(express.json())
+app.use(require('./routes/auth'))
+
 app.listen(PORT,()=> {
-    console.log("server is running on", PORT)
+    console.log("server is running on port", PORT)
 })
+
+
+
